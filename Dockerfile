@@ -10,7 +10,7 @@ RUN apk add --no-cache nodejs yarn git build-base python3 && \
 
 COPY ./package.json ./yarn.lock ./
 
-RUN yarn install
+RUN yarn install --network-timeout 1000000
 
 COPY ./bin/webpacker ./bin/webpacker
 COPY ./config/webpack ./config/webpack
@@ -28,7 +28,7 @@ RUN apk add --no-cache nodejs yarn git build-base python3
 
 COPY ./vendor/motor-admin/ui/package.json ./vendor/motor-admin/ui/yarn.lock ./
 
-RUN yarn install
+RUN yarn install --network-timeout 1000000
 
 COPY ./vendor/motor-admin/ui ./
 
@@ -54,7 +54,8 @@ COPY . ./
 COPY --from=assets /opt/dist ./vendor/motor-admin/ui/dist
 COPY --from=webpacker /opt/public/packs ./public/packs
 
-RUN SECRET_KEY_BASE=bootsnap rails r "puts"
+RUN bundle exec bootsnap precompile --gemfile app/ lib/
+
 RUN ln -s /opt/motor-admin/bin/motor-admin /usr/local/bin && chmod +x /usr/local/bin/motor-admin
 
 WORKDIR /app

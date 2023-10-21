@@ -119,6 +119,7 @@ module Motor
 
         model = Class.new(base_class)
         model.table_name = name
+        model.ignored_columns += (model.column_names.map(&:to_sym).intersection(base_class.instance_methods) - [:id])
 
         DEFINED_MODELS[base_class.name][name] = model
 
@@ -137,7 +138,11 @@ module Motor
     end
 
     def set_model_constant(base_class, class_name, model)
-      Object.const_set(class_name, model)
+      if class_name.safe_constantize
+        Object.const_set("#{class_name}Record", model)
+      else
+        Object.const_set(class_name, model)
+      end
     rescue NameError
       base_module   = base_class.name.demodulize.safe_constantize
       base_module ||= Object.const_set(base_class.name.demodulize, Module.new)

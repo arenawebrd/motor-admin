@@ -25,22 +25,6 @@ Search, create, update, and delete data entries using a convenient UI. Create co
 
 [![Deploy on Digital Ocean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/motor-admin/motor-admin/tree/master&refcode=33c75473a82d)
 
-### Ubuntu
-
-```bash
-curl -o motor-admin -L https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Linux-x86_64
-sudo chmod +x ./motor-admin
-./motor-admin
-```
-
-### MacOS
-
-```bash
-curl -o motor-admin -L https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Darwin-x86_64
-chmod +x ./motor-admin
-./motor-admin
-```
-
 ### Docker
 
 ```bash
@@ -67,19 +51,16 @@ docker compose up
 * [Intelligence search](#intelligence-search)
 * [Optimized for mobile](#optimized-for-mobile)
 * [Configurations Sync](https://github.com/motor-admin/motor-admin/tree/master/guides/configurations_sync_between_environments.md)
-
-## [Pro](https://www.getmotoradmin.com/pro)
-
-* Roles and permissions control
+* [Roles and permissions control](https://docs.getmotoradmin.com/guide/roles_and_permissions.html)
 * Multiple databases support
 * Audit log
-* Live collaboration
-* Multi-factor authentication
-* Custom styling
 * Personalized report alerts via Slack
-* Full-text search
-* Stripe integration
-* Shareable forms and reports
+
+## [Enterprise](https://www.getmotoradmin.com/pro)
+
+* Multi-factor authentication
+* SAML SSO
+* Custom styling
 * [learn more](https://www.getmotoradmin.com/pro)
 
 ### Customizable CRUD
